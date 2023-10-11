@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import PreviewDialogBtn from "./PreviewDialogBtn";
 import Designer from "./Designer";
 import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import DragOverlayWrapper from "./DragOverlayWrapper";
@@ -39,15 +38,12 @@ function FormBuilder({ name }: { name: string }) {
 
   useEffect(() => {
     if (isReady) return;
-    // const elements = JSON.parse(form.content);
-    // setElements(elements);
     setSelectedElement(null);
     const readyTimeout = setTimeout(() => setIsReady(true), 500);
     return () => clearTimeout(readyTimeout);
   }, [setElements, isReady, setSelectedElement]);
 
   function save() {
-    const jsonElements = JSON.stringify(elements);
     setShow(elements);
   }
 
@@ -68,13 +64,9 @@ function FormBuilder({ name }: { name: string }) {
             {name}
           </h2>
           <div className="flex items-center gap-2">
-            <PreviewDialogBtn />
-            {/* <SaveFormBtn /> */}
-            {/* <PublishFormBtn id={form.id} /> */}
             <Button variant={"outline"} className="gap-2" onClick={save}>
               <HiSaveAs className="h-4 w-4" />
               Save
-              {/* {loading && <FaSpinner className="animate-spin" />} */}
             </Button>
           </div>
         </nav>

@@ -2,7 +2,6 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
-var PreviewDialogBtn_1 = require("./PreviewDialogBtn");
 var Designer_1 = require("./Designer");
 var core_1 = require("@dnd-kit/core");
 var DragOverlayWrapper_1 = require("./DragOverlayWrapper");
@@ -35,14 +34,11 @@ function FormBuilder(_a) {
     react_1.useEffect(function () {
         if (isReady)
             return;
-        // const elements = JSON.parse(form.content);
-        // setElements(elements);
         setSelectedElement(null);
         var readyTimeout = setTimeout(function () { return setIsReady(true); }, 500);
         return function () { return clearTimeout(readyTimeout); };
     }, [setElements, isReady, setSelectedElement]);
     function save() {
-        var jsonElements = JSON.stringify(elements);
         setShow(elements);
     }
     if (!isReady) {
@@ -56,7 +52,6 @@ function FormBuilder(_a) {
                     react_1["default"].createElement("span", { className: "text-muted-foreground mr-2" }, "Form:"),
                     name),
                 react_1["default"].createElement("div", { className: "flex items-center gap-2" },
-                    react_1["default"].createElement(PreviewDialogBtn_1["default"], null),
                     react_1["default"].createElement(button_1.Button, { variant: "outline", className: "gap-2", onClick: save },
                         react_1["default"].createElement(hi_1.HiSaveAs, { className: "h-4 w-4" }),
                         "Save"))),
